@@ -1,4 +1,4 @@
-# Trips -- Express / Angular
+# Trips -- MEAN stack
  
 ## Idea
 
