@@ -8,7 +8,7 @@ There is a public part - Home page - when user is not registered or logged in, w
 User that already created trip can: edit trip, delete trip. If the creator of the trip isn't the current logged in user he/she can only see details about the trip.
 
 ## Front - end 
-###Material is used for nicer look
+### Material is used for nicer look
 
 Project setup
 npm install
