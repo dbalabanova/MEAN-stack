@@ -14,9 +14,9 @@ const tripSchema = new Schema({
         type: String,
         require: true
     },
-    isCreator: {
-        type: Boolean,
-        default:false
+    creatorId: {
+        type: String,
+        require: true
     },
 });
 

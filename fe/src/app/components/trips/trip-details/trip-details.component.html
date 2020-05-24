@@ -1,0 +1,22 @@
+<div *ngIf="trip">
+  <div>
+
+    <div class="card-container" >
+        <mat-card class="example-card">
+          <mat-card-header >
+            <mat-card-title>{{trip.name}}</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image src="{{trip.imagePath}}" alt="{{trip.name}}">
+          <mat-card-content>
+            <p>
+             {{trip.description}}
+            </p>
+          </mat-card-content>
+          <mat-card-actions *ngIf="isCreator()" >
+            <button  [routerLink] = "['/trips','edit',id]" mat-button>EDIT</button>
+           <button (click)="delete()" mat-button>DELETE</button> 
+          </mat-card-actions>
+        </mat-card>
+      </div>
+  </div>
+</div>

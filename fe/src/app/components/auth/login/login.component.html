@@ -1,0 +1,42 @@
+
+
+<form (ngSubmit)="login()" [formGroup]="formLogin">
+    <div>LOGIN FORM</div>
+      <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your email</mat-label>
+          <input 
+          formControlName="email"
+          minlength="6"
+          ngModel
+          matInput 
+          placeholder="pat@example.com" >
+          <mat-error *ngIf="formLogin?.controls.email?.touched && formLogin?.controls.email?.errors?.required">This field is required</mat-error>
+          <mat-error *ngIf="formLogin?.controls.email?.errors?.email">This is not a valid email</mat-error>
+        </mat-form-field>
+
+      </div>
+
+        <div class ="password-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your password</mat-label>
+          <input 
+          formControlName="password"
+          minlength="6"
+          ngModel
+          matInput 
+          [type]="hide ? 'password' : 'text'">
+          <mat-error *ngIf="formLogin?.controls.password?.touched && formLogin?.controls.password?.errors?.required">This field is required</mat-error>
+          <mat-error *ngIf="formLogin?.controls.password?.errors?.minlength">Password should be at least 6 symbols</mat-error>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+
+  <div class="example-button-row">
+       <button type="submit" [disabled]="formLogin.invalid" mat-raised-button color="accent">Login</button>
+   
+  </div>
+
+</form>

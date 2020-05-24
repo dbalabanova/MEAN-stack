@@ -1,0 +1,21 @@
+<div class="card-container" *ngFor="let trip of trips$ | async">
+  <mat-card class="example-card">
+    <mat-card-header >
+      <!-- <div mat-card-avatar class="example-header-image"></div> -->
+      <mat-card-title>{{trip.name}}</mat-card-title>
+      <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+    </mat-card-header>
+    
+      <img mat-card-image src="{{trip.imagePath}}" alt="{{trip.name}}">
+    <mat-card-content>
+      <p>
+       {{trip.description  | slice:0:101}}...
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button  [routerLink] = "['/trips','details',trip._id]" mat-button>DETAILS</button>
+     <!-- <button mat-button>EDIT</button>  -->
+    </mat-card-actions>
+  </mat-card>
+</div>
+

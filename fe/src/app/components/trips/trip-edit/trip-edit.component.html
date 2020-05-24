@@ -1,0 +1,43 @@
+
+<div *ngIf="bindingModel">
+
+  <form (ngSubmit)="edit()" [formGroup]="editForm">
+    
+    <div class="example-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input 
+        formControlName="name"
+        [(ngModel)] = "bindingModel.name"
+        matInput>
+        <mat-error *ngIf="editForm?.controls.name?.errors?.required">This field is required</mat-error>
+
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>image</mat-label>
+        <input class="imageInput"
+        formControlName="imagePath"
+        [(ngModel)] = "bindingModel.imagePath"
+        matInput>
+        <mat-error *ngIf="editForm?.controls.imagePath?.errors?.required">This field is required</mat-error>
+        
+      </mat-form-field>
+      <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Description</mat-label>
+          <textarea 
+          formControlName="description"
+          [(ngModel)] = "bindingModel.description"
+          matInput></textarea>
+          <mat-error *ngIf="editForm?.controls.description?.touched && editForm?.controls.description?.errors?.required">This field is required</mat-error>
+          <mat-error *ngIf="editForm?.controls.description?.errors?.minlength">The description must be at least {{editForm.controls.description.errors.minlength.requiredLength}} symbols</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="example-button-row">
+        <button type ="submit" [disabled]="editForm.invalid" mat-button color="accent" >Submit</button>
+      </div>
+    </form> 
+
+  </div>
+    

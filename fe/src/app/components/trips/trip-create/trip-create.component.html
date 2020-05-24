@@ -1,0 +1,40 @@
+<!-- {{bindingModel | json}} -->
+
+<form (ngSubmit)="create()" [formGroup]="createForm">
+
+    <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input 
+          formControlName="name"
+          matInput>
+          <mat-error *ngIf="createForm?.controls.name?.touched && createForm?.controls.name?.errors?.required">This field is required</mat-error>
+
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>image</mat-label>
+          <input 
+          formControlName="imagePath"
+          matInput>
+          <mat-error *ngIf="createForm?.controls.imagePath?.touched && createForm?.controls.imagePath?.errors?.required">This field is required</mat-error>
+
+          <!-- <mat-select>
+            <mat-option value="option">Option</mat-option>
+          </mat-select> -->
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Description</mat-label>
+          <textarea 
+          formControlName="description"
+          
+          matInput></textarea>
+          <mat-error *ngIf="createForm?.controls.description?.touched && createForm?.controls.description?.errors?.required">This field is required</mat-error>
+          <mat-error *ngIf="createForm?.controls.description?.errors?.minlength">The description must be at least {{createForm.controls.description.errors.minlength.requiredLength}} symbols</mat-error>
+        </mat-form-field>
+      </div>
+    <div class="example-button-row">
+      <button type ="submit" [disabled]="createForm.invalid" mat-button color="accent" >Submit</button>
+    </div>
+</form>

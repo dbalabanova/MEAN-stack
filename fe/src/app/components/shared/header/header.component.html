@@ -1,0 +1,55 @@
+
+
+<mat-toolbar color="primary" class="navbar">
+  <div>
+    <a [routerLink]="['/trips/list']">Trips</a>
+  </div>
+  <div>
+    <ul>
+      <li >
+        <a [routerLink]="['']">Home</a>
+      </li>
+      <li *ngIf="!authService.isAuthenticated()">
+        <a [routerLink]="['/auth/login']">Login</a>
+      </li>
+      <li *ngIf="!authService.isAuthenticated()">
+        <a [routerLink]="['/auth/signup']">Register</a>
+      </li>
+      <li *ngIf="authService.isAuthenticated()">
+        <a id = "logoutBtn" type = "button" (click)="logout()">Logout</a>
+      </li>
+      <li *ngIf="authService.isAuthenticated()">
+        <a [routerLink]="['/trips/list']">Trips List</a>
+      </li>
+      <li *ngIf="authService.isAuthenticated()">
+        <a [routerLink]="['/trips/create']">Create Trip</a>
+      </li>
+
+      <!-- <li >
+        <a [routerLink]="['']">Home</a>
+      </li>
+      <li >
+        <a [routerLink]="['/auth/login']">Login</a>
+      </li>
+      <li >
+        <a [routerLink]="['/auth/signup']">Register</a>
+      </li>
+      <li >
+        <a id = "logoutBtn" type = "button" (click)="logout()">Logout</a>
+      </li>
+      <li >
+        <a [routerLink]="['/trips/list']">Trips List</a>
+      </li>
+      <li >
+        <a [routerLink]="['/trips/create']">Create Trip</a>
+      </li> -->
+    
+    </ul>
+    <!-- <a [routerLink]="['']">Home</a>
+    <a [routerLink]="['/auth/login']">Login</a>
+    <a [routerLink]="['/auth/signup']">Register</a>
+    <a (click)="logout()">Logout</a>
+    <a [routerLink]="['/trips/create']">Create trip</a> -->
+  </div>
+</mat-toolbar>
+
