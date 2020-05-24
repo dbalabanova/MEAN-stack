@@ -6,6 +6,9 @@ import {Router} from '@angular/router'
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
 
+
+const baseUrl = 'http://localhost:3000/api'
+
 @Injectable({
   providedIn: 'root'
 })
@@ -21,7 +24,7 @@ export class AuthService {
 
    }
     signUp(email:string, password: string) {
-      this.http.post('http://localhost:3000/api/register', { email, password })
+      this.http.post(`${baseUrl}/register`, { email, password })
       .subscribe({
         next: () => {
           this.router.navigate(['/auth/login'])
@@ -34,7 +37,7 @@ export class AuthService {
   }
   
   signIn(email: string, password: string) {
-    this.http.post('http://localhost:3000/api/login', {email, password})
+    this.http.post(`${baseUrl}/login`, {email, password})
     .subscribe({
       next: (user) => {
         this.user = user
@@ -50,7 +53,7 @@ export class AuthService {
    }
 
   logout() {
-    this.http.get('http://localhost:3000/api/logout').subscribe({
+    this.http.get('`${baseUrl}/logout`').subscribe({
       next: () => {
       this.user=null
       this.toastr.success('Logged out successfully','Success')
@@ -64,7 +67,7 @@ export class AuthService {
 
 
   getUser() {
-    this.http.get('http://localhost:3000/api/users/currentUser').subscribe({
+    this.http.get(`${baseUrl}/users/currentUser`).subscribe({
       next: (user) =>{
         this.user = user
       },
